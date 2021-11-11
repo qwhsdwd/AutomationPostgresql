@@ -132,16 +132,12 @@ END
 
 if __name__ == '__main__':
     config = configparser.ConfigParser()
-    config.read("./config.ini")
-    try:
-        host = config['postgresql']['host']
-        user = config['postgresql']['user']
-        passwd = config['postgresql']['password']
-        db = config['postgresql']['database']
-        schema = config['postgresql']['schema']
-        port = config['postgresql']['port']
+    config.read("/app/createSql/config.ini")
+    host = config['postgresql']['host']
+    user = config['postgresql']['user']
+    passwd = config['postgresql']['password']
+    db = config['postgresql']['database']
+    schema = config['postgresql']['schema']
+    port = config['postgresql']['port']
 
-        main(db, user, passwd, host, port, schema)
-    except KeyError:
-        logger.warning("没有在/app/createSql目录下运行")
-        print("请在/app/createSql目录下运行main.py")
+    main(db, user, passwd, host, port, schema)
